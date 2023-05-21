@@ -6,7 +6,7 @@ COLORS = {
 for i = 1, #COLORS do
     minetest.register_node("amogus:" .. COLORS[i] .. "amongy", {
         description = "This looks...kinda sus",
-        drawtype = "mesh",
+    drawtype = "mesh",
         mesh = "Amongus.obj",
         tiles = {COLORS[i] .. "_amongy_model.png"},
         paramtype2 = "facedir",
@@ -19,7 +19,9 @@ for i = 1, #COLORS do
             fixed = {-0.3, -0.46, -0.4, 0.3, 0.3, 0.3}
         },
         inventory_image = COLORS[i] .. "_amongy.png",
-        groups = {cracky = 3}
+        is_ground_content = false,
+        groups = {snappy = 2, choppy = 2, oddly_breakable_by_hand = 3,
+        flammable = 3, wool = 1}
     })
 end
 
