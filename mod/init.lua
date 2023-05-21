@@ -1,28 +1,38 @@
-minetest.register_node("amogus:amongy", {
-    description = "This looks...kinda sus",
-    drawtype = "mesh",
-    mesh = "Amongus.obj",
-    tiles = {"amongy3D.png"},
-    paramtype2 = "facedir",
-    selection_box = {
-        type= "fixed",
-        fixed = {-0.3, -0.46, -0.4, 0.3, 0.3, 0.3}
-    },
-    collision_box = {
-        type = "fixed",
-         fixed = {-0.3, -0.46, -0.4, 0.3, 0.3, 0.3},
-      },
-    inventory_image = "amongy.png",
+COLORS = {
+    "red", "blue", "cyan", "grey", "pink", "black", "brown", "green",
+    "white", "orange", "purple", "yellow", "magenta", "dark_grey", "dark_green"
+}
 
-    groups = {cracky = 3}
-})
+for i = 1, #COLORS do
+    minetest.register_node("amogus:" .. COLORS[i] .. "amongy", {
+        description = "This looks...kinda sus",
+        drawtype = "mesh",
+        mesh = "Amongus.obj",
+        tiles = {COLORS[i] .. "_amongy_model.png"},
+        paramtype2 = "facedir",
+        selection_box = {
+            type= "fixed",
+            fixed = {-0.3, -0.46, -0.4, 0.3, 0.3, 0.3}
+        },
+        collision_box = {
+            type = "fixed",
+            fixed = {-0.3, -0.46, -0.4, 0.3, 0.3, 0.3}
+        },
+        inventory_image = COLORS[i] .. "_amongy.png",
+        groups = {cracky = 3}
+    })
+end
 
-minetest.register_craft({
-    type = "shaped",
-    output =  "amogus:amongy 1",
-    recipe = {
-        {"", "wool:red", "wool:blue"},
-        {"wool:red", "wool:red", "firwool:red"},
-        {"", "wool:red", "wool:red"}
-    }
-})
+------------------------------------------------------------
+
+for i = 1, #COLORS do
+    minetest.register_craft({
+        type = "shaped",
+        output =  "amogus:" .. COLORS[i] .. "amongy 1",
+        recipe = {
+            {"", "wool:".. COLORS[i], "wool:blue"},
+            {"wool:" .. COLORS[i], "wool:" .. COLORS[i], "wool:" .. COLORS[i]},
+            {"", "wool:" .. COLORS[i], "wool:" .. COLORS[i]}
+        }
+    })
+end
